@@ -14,7 +14,7 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 500, height: 500, frame: false, 
-    icon: path.join(__dirname, 'icon.png'),
+    icon: 'icon.png',
     webPreferences: {
       nodeIntegration: false
     }});
@@ -24,6 +24,18 @@ function createWindow() {
   mainWindow.setBackgroundColor("#fff");
 
   const template = [
+    {
+      label: 'Application',
+      submenu: [
+        {
+          role: 'about',
+        },
+        { type: 'separator' },
+        {
+          role: 'quit',
+        }
+      ]
+    },
     {
       label: 'Edit',
       submenu: [
@@ -42,14 +54,6 @@ function createWindow() {
       label: 'View',
       submenu: [
         { role: 'reload' },
-        { role: 'forcereload' },
-        { role: 'toggledevtools' },
-        { type: 'separator' },
-        { role: 'resetzoom' },
-        { role: 'zoomin' },
-        { role: 'zoomout' },
-        { type: 'separator' },
-        { role: 'togglefullscreen' }
       ]
     },
     {
@@ -64,7 +68,7 @@ function createWindow() {
       submenu: [
         {
           label: 'Learn More',
-          click() { require('electron').shell.openExternal('https://electronjs.org') }
+          click() { require('electron').shell.openExternal('https://huntercaron.com') }
         }
       ]
     }
