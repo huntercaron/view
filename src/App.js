@@ -1,26 +1,51 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { injectGlobal, keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
   -webkit-app-region: drag;
+    background-color: white;
   font-family: 'Courier New', Courier, monospace;
 `
 
 const InputContainer = styled.form`
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+
+  animation: ${fadeIn} 300ms ease-in;
 
   transition: opacity 200ms 400ms ease-out;
-  opacity: ${props => props.submitted ? 0 : 1};
-
+  opacity: ${props => props.submitted ? 0 : 1} !important;
+  z-index: 10;
 `;
+
+const ImagesContainer = styled.div`
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+`
 
 const PrimaryImage = styled.div`
   background-image: url(${props => props.src});
@@ -80,6 +105,27 @@ const SubmitArrow = styled.button`
   
 `
 
+
+function shuffleArray(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+
 // function filter_images(block) {
 //   return block._type === "link";
 // }
@@ -100,7 +146,7 @@ class App extends Component {
   }
 
   handleClick = () => {
-    if (this.state.imagesLoaded) {
+    if (this.state.imageMode) {
       if (this.state.iterator === this.state.dataLength-2) {
         this.resetIterator()
       } else {
@@ -116,32 +162,40 @@ class App extends Component {
   }
 
   resetIterator = () => {
+    let randomizedData = shuffleArray(this.state.imageUrls);
+
     this.setState({
       iterator: 0,
+      imageUrls: randomizedData
     });
   }
 
   fetchData = (url) => {
     let scope = this;
-    axios.get('https://api.are.na/v2/channels/layouts-1506953554')
+    if (url.trim() === "" || !url.includes("api.are.na/v2/channels/")) {
+      url = "https://api.are.na/v2/channels/layouts-1506953554";
+    }
+
+    axios.get(url)
     .then(function (response) {
       setTimeout(() => {
         scope.setState({
-          inputMode: false
+          inputView: false
         })
-      }, 600);
+      }, 800);
 
       console.log(response.data.contents[0]);
       
       
       let data = response.data.contents.map(block => block.class.toLowerCase() === 'image' && block.image.display.url);
       let cleanData = data.filter(n => n);
-      console.log(cleanData);
+      let randomizedData = shuffleArray(cleanData)
       
 
       scope.setState({
-        dataLength: cleanData.length,
-        imageUrls: cleanData,
+        dataLength: randomizedData.length,
+        imageUrls: randomizedData,
+        imageMode: true,
         iterator: 0
       })
     })
@@ -167,7 +221,6 @@ class App extends Component {
 
     this.urlInput.blur()
     this.urlInput.value = "";
-    console.log("submitted");
 
     this.setState({
       imageMode: true
@@ -203,12 +256,12 @@ class App extends Component {
   render() {
     return (
       <Container onClick={this.handleClick}>
-        {this.state.imagesLoaded && (
-          <React.Fragment>
+
+          <ImagesContainer>
             <PrimaryImage src={this.state.imageUrls[this.state.iterator]} />
             <HiddenImage src={this.state.imageUrls[this.state.iterator+1]} />
-          </React.Fragment>
-        )}
+          </ImagesContainer>
+
         {this.state.inputView && (
           <InputContainer submitted={this.state.imageMode} onSubmit={this.handleLinkSubmit}>
             <LinkInput submitted={this.state.imageMode} type="text" innerRef={input => this.urlInput = input} />

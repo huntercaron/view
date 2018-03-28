@@ -11,12 +11,13 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1000, height: 500, frame: false, webPreferences: {
+    width: 500, height: 500, frame: false, webPreferences: {
       nodeIntegration: false
     }});
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', () => mainWindow = null);
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
+
 }
 
 
