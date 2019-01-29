@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
-import axios from 'axios'
 import { shuffleArray, timeout } from '../utils/'
 
 import EntryView from './EntryView'
@@ -52,30 +51,27 @@ function useDataFetch() {
         })
         const cleanedNewPages = await Promise.all(newPageData);
 
-        const randomizedAllData = [].concat.apply([], [arrays])
-        
+        const allPages = [].concat.apply([], [randomizedData.slice(2), ...cleanedNewPages])
+        const randomizedAllPages = shuffleArray(allPages)
+        const allPagesWithStart = randomizedData.slice(0, 2).concat(randomizedAllPages)
 
+        setGalleryData(allPagesWithStart)
     }]
 }
 
 
 
 function App() {
-    const [iterator, setIterator] = useState(0);
-    const [initialDataLoaded, setInitialDataLoaded] = useState(false);
     const [galleryData, fetchGalleryData] = useDataFetch();
     
     return (
         <Container>
-
-            {!initialDataLoaded && (
+            {galleryData ? (
+                <Viewer galleryData={galleryData}/>
+            ):(
                 <EntryView fetchData={fetchGalleryData}/>
             )}
-
-            {/* {galleryData && (
-                <Viewer />
-            )} */}
-
+            
             <GlobalStyle />
         </Container>
     );

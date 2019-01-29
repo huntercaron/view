@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ImagesContainer = styled.div`
@@ -29,12 +29,24 @@ const HiddenImage = styled.img`
   position: absolute;
 `
 
+function useIterator(dataLength) {
+    const [iterator, setIterator] = useState(0);
 
-function Viewer() {
+    return [iterator, () => {
+        if (iterator === dataLength) 
+            setIterator(0)
+        else 
+            setIterator(iterator + 1)
+    }]
+}
+
+function Viewer({ galleryData }, props) {
+    const [iterator, incrementIterator] = useIterator(galleryData.length);
+
     return ( 
-        <ImagesContainer>
-          <PrimaryImage src={this.state.imageUrls[this.state.iterator]} />
-          <HiddenImage src={this.state.iterator === this.state.imageUrls.length-1 ? this.state.imageUrls[0] : this.state.imageUrls[this.state.iterator+1]} />
+        <ImagesContainer onClick={incrementIterator}>
+          <PrimaryImage src={galleryData[iterator]} />
+          <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
         </ImagesContainer>
     )
 }
