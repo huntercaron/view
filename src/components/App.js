@@ -1,0 +1,118 @@
+import React, { useState } from 'react';
+import styled, { createGlobalStyle } from 'styled-components'
+import axios from 'axios'
+import { shuffleArray, timeout } from '../utils/'
+
+import EntryView from './EntryView'
+import Viewer from './Viewer';
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  -webkit-app-region: drag;
+  background-color: white;
+  font-family: 'Courier New', Courier, monospace;
+`
+
+
+
+function useDataFetch() {
+    const [galleryData, setGalleryData] = useState();
+
+    const makeUrl = (slug, page) => `https://api.are.na/v2/channels/${slug}?page=${page}/contents`;
+    const cleanData = (data) => data.filter(n => n);
+    const filterImages = (data) => data.map(block => block.class.toLowerCase() === 'image' && block.image.display.url);
+
+    return [galleryData, async (url) => {
+        const slug = (url && url.includes("are.na") && url.lastIndexOf('/') >= 0) ? 
+            url.substr(url.lastIndexOf('/') + 1) :
+            "layouts-1506953554";
+
+        const firstPageResponse = await fetch(makeUrl(slug, 0))
+        const firstPageData = await firstPageResponse.json();
+        const randomizedData = shuffleArray(cleanData(filterImages(firstPageData.contents)));
+        const pages = Math.ceil(firstPageData.length/firstPageData.per);
+
+        setGalleryData(randomizedData);
+        
+        if (randomizedData.length < firstPageData.per)
+            return;
+        
+        await timeout(100);
+        const pagesData = [];
+
+        for(var i = 1; i <= pages; i++) {
+            pagesData.push(fetch(makeUrl(slug, i)));
+        }
+
+        const newPagesResponse = await Promise.all(pagesData)
+        const newPageData = newPagesResponse.map(async response => {
+            const pageJson = await response.json();
+            return cleanData(filterImages(pageJson.contents));
+        })
+        const cleanedNewPages = await Promise.all(newPageData);
+
+        const randomizedAllData = [].concat.apply([], [arrays])
+        
+
+    }]
+}
+
+
+
+function App() {
+    const [iterator, setIterator] = useState(0);
+    const [initialDataLoaded, setInitialDataLoaded] = useState(false);
+    const [galleryData, fetchGalleryData] = useDataFetch();
+    
+    return (
+        <Container>
+
+            {!initialDataLoaded && (
+                <EntryView fetchData={fetchGalleryData}/>
+            )}
+
+            {/* {galleryData && (
+                <Viewer />
+            )} */}
+
+            <GlobalStyle />
+        </Container>
+    );
+}
+
+export default App;
+
+
+const GlobalStyle = createGlobalStyle`
+  *, *:before, *:after {
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+  }
+
+  html {
+  ${'' /* Maybe Try?  font-size: calc(1.25vw + 62.5%); */}
+    font-size: 62.5%;
+    height: 100%;
+  }
+
+  body {
+      overflow: hidden;
+      margin: 0;
+      height: 100%;
+      font-size: 1.6em;
+      line-height: 1.6;
+      font-weight: 400;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      color: #222;
+      webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    height: 100%;
+  }
+`

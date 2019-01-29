@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios'
-import styled, { injectGlobal, keyframes } from 'styled-components'
+import styled, { createGlobalStyle, keyframes } from 'styled-components'
 
 const fadeIn = keyframes`
   from {
@@ -16,7 +16,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   -webkit-app-region: drag;
-    background-color: white;
+  background-color: white;
   font-family: 'Courier New', Courier, monospace;
 `
 
@@ -47,7 +47,11 @@ const ImagesContainer = styled.div`
   height: 100%;
 `
 
-const PrimaryImage = styled.div`
+const PrimaryImage = styled.div.attrs({
+  style: ({ backgroundImage }) => ({
+    backgroundImage
+  })
+})`
   background-image: url(${props => props.src});
   background-size: cover;
   background-repeat: no-repeat;
@@ -105,6 +109,38 @@ const SubmitArrow = styled.button`
   
 `
 
+const GlobalStyle = createGlobalStyle`
+  *, *:before, *:after {
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+  }
+  html {
+  ${'' /* Maybe Try?  font-size: calc(1.25vw + 62.5%); */}
+    font-size: 62.5%;
+    height: 100%;
+  }
+
+  body {
+      overflow: hidden;
+      margin: 0;
+      height: 100%;
+      font-size: 1.6em;
+      line-height: 1.6;
+      font-weight: 400;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      color: #222;
+      webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    height: 100%;
+  }
+`
+
 
 function shuffleArray(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -130,25 +166,26 @@ function shuffleArray(array) {
 //   return block._type === "link";
 // }
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+class App extends React.Component {
 
-    this.state = {
+  maxPages = 0
+  currentPage = 0
+  dataLength
+
+  state = {
       iterator: 0,
       imageUrls: [],
       imageMode: false,
-      dataLength: null,
-      maxPages: null,
+      
       wrongFileType: false,
       inputView: true
-    }
   }
+
 
   handleClick = () => {
     if (this.state.imageMode) {
-      if (this.state.iterator === this.state.dataLength-2) {
-        this.resetIterator()
+      if (this.state.iterator === this.dataLength-2) {
+        this.nextPage()
       } else {
         this.incrementIterator()
       }
@@ -170,30 +207,41 @@ class App extends Component {
     });
   }
 
+  nextPage = () => {
+    const prevPage = this.currentPage
+
+    while (this.currentPage === prevPage)
+      this.currentPage = Math.floor(Math.random()*(this.maxPages-1))+1
+
+    this.fetchData();
+  }
+
   fetchData = (url) => {
-    let scope = this;
-    if (url.trim() === "" || !url.includes("api.are.na/v2/channels/")) {
-      url = "https://api.are.na/v2/channels/layouts-1506953554";
-    }
+    if (url && url.includes("are.na") && url.lastIndexOf('/') >= 0) {
+      const slug = url.substr(url.lastIndexOf('/') + 1)
+      url = `https://api.are.na/v2/channels/${slug}?page=${this.currentPage}`;
+    } else {
+      url = `https://api.are.na/v2/channels/layouts-1506953554?page=${this.currentPage}`;
+    } 
 
     axios.get(url)
-    .then(function (response) {
+    .then(response => {
       setTimeout(() => {
-        scope.setState({
+        this.setState({
           inputView: false
         })
       }, 800);
-
-      console.log(response.data.contents[0]);
       
-      
+      let rawData = response.data;
       let data = response.data.contents.map(block => block.class.toLowerCase() === 'image' && block.image.display.url);
       let cleanData = data.filter(n => n);
       let randomizedData = shuffleArray(cleanData)
+      this.maxPages = Math.ceil(rawData.length/rawData.per)
       
+      this.resetIterator()
+      this.dataLength = randomizedData.length
 
-      scope.setState({
-        dataLength: randomizedData.length,
+      this.setState({
         imageUrls: randomizedData,
         imageMode: true,
         iterator: 0
@@ -237,10 +285,7 @@ class App extends Component {
   handleFileDrop = (e) => {
     e.stopPropagation();
     e.preventDefault();
-
-    console.log(e);
-        
-
+      
     if (e.dataTransfer.files[0].type === "application/json") {
       this.loadFileData(e.dataTransfer.files[0].path);
       let file = e.dataTransfer.files[0]
@@ -257,14 +302,14 @@ class App extends Component {
     return (
       <Container onClick={this.handleClick}>
 
-          <ImagesContainer>
-            <PrimaryImage src={this.state.imageUrls[this.state.iterator]} />
-            <HiddenImage src={this.state.imageUrls[this.state.iterator+1]} />
-          </ImagesContainer>
+        <ImagesContainer>
+          <PrimaryImage src={this.state.imageUrls[this.state.iterator]} />
+          <HiddenImage src={this.state.iterator === this.state.imageUrls.length-1 ? this.state.imageUrls[0] : this.state.imageUrls[this.state.iterator+1]} />
+        </ImagesContainer>
 
         {this.state.inputView && (
           <InputContainer submitted={this.state.imageMode} onSubmit={this.handleLinkSubmit}>
-            <LinkInput submitted={this.state.imageMode} type="text" innerRef={input => this.urlInput = input} />
+            <LinkInput submitted={this.state.imageMode} type="text" ref={input => this.urlInput = input} />
 
             <SubmitArrow submitted={this.state.imageMode}>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 14 11">
@@ -274,42 +319,11 @@ class App extends Component {
 
           </InputContainer>
         )}
+
+        <GlobalStyle />
       </Container>
     );
   }
 }
 
 export default App;
-
-
-injectGlobal`
-  *, *:before, *:after {
-      box-sizing: border-box;
-      -webkit-overflow-scrolling: touch;
-  }
-  html {
-  ${'' /* Maybe Try?  font-size: calc(1.25vw + 62.5%); */}
-    font-size: 62.5%;
-    height: 100%;
-  }
-
-  body {
-      overflow: hidden;
-      margin: 0;
-      height: 100%;
-      font-size: 1.6em;
-      line-height: 1.6;
-      font-weight: 400;
-      font-family: 'Helvetica', 'Arial', sans-serif;
-      color: #222;
-      webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-      text-rendering: optimizeLegibility;
-  }
-
-  #root {
-    height: 100%;
-  }
-`
