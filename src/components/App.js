@@ -4,6 +4,7 @@ import { shuffleArray, timeout } from '../utils/'
 
 import EntryView from './EntryView'
 import Viewer from './Viewer';
+import CountdownCircle from './CountdownCircle'
 
 const Container = styled.div`
   width: 100%;
@@ -12,8 +13,6 @@ const Container = styled.div`
   background-color: white;
   font-family: 'Courier New', Courier, monospace;
 `
-
-
 
 function useDataFetch() {
     const [galleryData, setGalleryData] = useState();
@@ -31,20 +30,25 @@ function useDataFetch() {
         const firstPageData = await firstPageResponse.json();
         const randomizedData = shuffleArray(cleanData(filterImages(firstPageData.contents)));
         const pages = Math.ceil(firstPageData.length/firstPageData.per);
-
-        setGalleryData(randomizedData);
         
-        if (randomizedData.length < firstPageData.per)
+        if (randomizedData.length < firstPageData.per) {
+            await timeout(800);
+            setGalleryData(randomizedData);
             return;
-        
-        await timeout(100);
+        }
+            
         const pagesData = [];
 
         for(var i = 1; i <= pages; i++) {
             pagesData.push(fetch(makeUrl(slug, i)));
         }
 
+        await timeout(800);
+
+        setGalleryData(randomizedData);
+
         const newPagesResponse = await Promise.all(pagesData)
+        
         const newPageData = newPagesResponse.map(async response => {
             const pageJson = await response.json();
             return cleanData(filterImages(pageJson.contents));
@@ -66,12 +70,13 @@ function App() {
     
     return (
         <Container>
+            
             {galleryData ? (
                 <Viewer galleryData={galleryData}/>
             ):(
                 <EntryView fetchData={fetchGalleryData}/>
             )}
-            
+
             <GlobalStyle />
         </Container>
     );

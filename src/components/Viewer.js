@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
+import CountdownCicle from './CountdownCircle'
+import FastAverageColor from 'fast-average-color/dist/index.es6';
 
 const ImagesContainer = styled.div`
   top: 0;
@@ -10,11 +12,9 @@ const ImagesContainer = styled.div`
   height: 100%;
 `
 
-const PrimaryImage = styled.div.attrs({
-  style: ({ backgroundImage }) => ({
-    backgroundImage
-  })
-})`
+const PrimaryImage = styled.div.attrs(({ backgroundImage }) => ({
+  backgroundImage: backgroundImage
+}))`
   background-image: url(${props => props.src});
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,13 +40,40 @@ function useIterator(dataLength) {
     }]
 }
 
+function idk() {
+  console.log("FUCKINSNG")
+}
+
 function Viewer({ galleryData }, props) {
     const [iterator, incrementIterator] = useIterator(galleryData.length);
+    const imageEl = useRef(null);
+    const ref = useRef(null);
+
+    function getImageColor() {
+      let avgColor = ref.current; 
+      if (avgColor !== null) {
+        return avgColor;
+      }
+      let newAvgColor = new FastAverageColor();
+      ref.current = newAvgColor;
+      return newAvgColor;
+    }
+    
+    useLayoutEffect(() => {
+      // console.log(getImageColor().getColor(imageEl));
+    }, [iterator])
+
 
     return ( 
         <ImagesContainer onClick={incrementIterator}>
-          <PrimaryImage src={galleryData[iterator]} />
+          <PrimaryImage 
+            src={galleryData[iterator]}
+            ref={imageEl}
+            onLoad={idk}
+          />
           <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
+
+          <CountdownCicle />
         </ImagesContainer>
     )
 }
