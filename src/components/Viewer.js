@@ -52,7 +52,10 @@ function Viewer({ galleryData, viewMode }, props) {
 
     return ( 
         <ImagesContainer onClick={incrementIterator}>
-          <PrimaryImage src={galleryData[iterator]} />
+          <PrimaryImage
+            src={galleryData[iterator]}
+            onError={incrementIterator}
+          />
           <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
 
           {viewMode === "TIMER" &&
