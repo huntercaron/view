@@ -51,7 +51,7 @@ function Viewer({ galleryData, viewMode }, props) {
     }, [iterator, viewMode])
 
     return ( 
-        <ImagesContainer onClick={incrementIterator}>
+        <ImagesContainer onClick={() => incrementIterator()}>
           <PrimaryImage
             src={galleryData[iterator]}
             onError={incrementIterator}

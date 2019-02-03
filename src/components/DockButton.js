@@ -43,7 +43,6 @@ const ButtonInner = styled.div`
     align-items: center;
     position: absolute;
     top: 2px;
-    left: 3px;
     background-color: black;
     opacity: 0;
     transition: opacity 120ms ease-out;
