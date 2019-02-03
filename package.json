@@ -7,6 +7,7 @@
   "main": "public/electron.js",
   "author": "Hunter Caron",
   "description": "Im your inspo app",
+  "repository": "https://github.com/huntercaron/view",
   "build": {
     "appId": "com.example.electron-cra",
     "files": [
