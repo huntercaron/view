@@ -1,7 +1,7 @@
 {
   "name": "view",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "3.0.1",
   "private": true,
   "homepage": "./",
   "main": "public/electron.js",

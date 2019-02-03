@@ -9,7 +9,9 @@ const url = require('url');
 const isDev = require('electron-is-dev');
 const ipc = require('electron').ipcMain;
 
-require('update-electron-app')()
+require('update-electron-app')({
+  repo: 'huntercaron/view'
+})
 debug();
 
 let mainWindow;
