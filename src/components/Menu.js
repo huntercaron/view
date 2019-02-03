@@ -5,7 +5,7 @@ import MenuItem from './MenuItem';
 import DockButton from './DockButton'
 import TimerIcon from '../assets/clock.svg'
 import MouseIcon from '../assets/mouse.svg'
-import ScrollIcon from '../assets/scroll.svg'
+// import ScrollIcon from '../assets/scroll.svg'
 
 const Container = styled.div`
     width: 100%;
@@ -42,7 +42,7 @@ function Menu(props) {
             <Container>
                 <Dock dockOpen={dockOpen}>
                     <MenuItem {...props} icon={TimerIcon} menuString={"TIMER"}/>
-                    <MenuItem {...props} icon={ScrollIcon} menuString={"SCROLL"}/>
+                    {/* <MenuItem {...props} icon={ScrollIcon} menuString={"SCROLL"}/> */}
                     <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
                 </Dock>
             </Container>
