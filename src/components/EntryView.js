@@ -57,8 +57,12 @@ const SubmitArrow = styled.button`
   width: 50px;
   height: 50px;
 
-  &:active {
+  &:hover {
     background-color: #eee;
+  }
+
+  &:active {
+    background-color: #dcdcdc;
   }
 `
 

@@ -31,6 +31,10 @@ const IconBg = styled.div`
     ${IconContainer}:hover & {
         opacity: 1;
     }
+
+    ${IconContainer}:active & {
+        background-color: #dcdcdc;
+    }
 `;
 
 function MenuItem({ icon, setViewMode, viewMode, menuString }) {

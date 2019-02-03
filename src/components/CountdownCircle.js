@@ -21,19 +21,11 @@ const SVG = styled.svg`
   transform: rotate(-90deg);
   transform-origin: center center;
   border-radius: 50%;
-  /* mix-blend-mode: difference !important; */
 
   circle {
     
   }
 `
-
-function getCoordinatesFromPercentage(percentage) {
-    const x = Math.cos(Math.PI * 2 * percentage);
-    const y = Math.sin(Math.PI * 2 * percentage);
-
-    return [x, y];
-}
 
 const CountdownCircle = ({ iterator }) => {
   const [progress, setProgress] = useState(0)
