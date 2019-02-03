@@ -42,7 +42,11 @@ function Viewer({ galleryData, viewMode }, props) {
     const [iterator, incrementIterator] = useIterator(galleryData.length);
 
     useEffect(() => {
-      const timeout = setTimeout(() => incrementIterator(), 6000*0.98)
+      const timeout = setTimeout(() => {
+        if (viewMode === "TIMER")
+          incrementIterator()
+      }, 6000*0.98)
+
       return () => clearTimeout(timeout);
     }, [iterator, viewMode])
 
