@@ -38,7 +38,6 @@ const LinkInput = styled.input`
 `
 
 const SubmitArrow = styled.button`
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +52,6 @@ const SubmitArrow = styled.button`
     opacity: ${props => props.submitted ? 0 : 1};
   }
   
-
   width: 50px;
   height: 50px;
 
