@@ -59,9 +59,9 @@ const SubmitArrow = styled.button`
     background-color: #eee;
   }
 
-  &:active {
+  /* &:active {
     background-color: #dcdcdc;
-  }
+  } */
 `
 
 function useUrlSubmission() {

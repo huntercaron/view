@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
 import { shuffleArray, timeout } from '../utils/'
 
@@ -66,17 +66,25 @@ function useDataFetch() {
 export const WindowHoverContext = React.createContext(false);
 
 function App() {
+    const viewerEl = useRef(null);
     const [galleryData, fetchGalleryData] = useDataFetch();
     const [viewMode, setViewMode] = useState("TIMER")
     const [windowHover, setWindowHover] = useState(false)
+    const [dockOpen, setDockOpen] = useState(false)
+
+    useEffect(() => {
+        console.log(viewerEl)
+        if (!dockOpen && viewerEl.current)
+            viewerEl.current.focus();
+    }, [dockOpen, galleryData]);
     
     return (
         <Container onMouseEnter={() => setWindowHover(true)} onMouseLeave={() => setWindowHover(false)}>
             <WindowHoverContext.Provider value={windowHover}>
                 {galleryData ? (
                     <> 
-                        <Menu viewMode={viewMode} setViewMode={setViewMode}/>
-                        <Viewer viewMode={viewMode} galleryData={galleryData}/>
+                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} setDockOpen={setDockOpen}/>
+                        <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl}/>
                     </>
                 ):(
                     <EntryView fetchData={fetchGalleryData}/>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 import MenuItem from './MenuItem';
@@ -13,6 +13,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 16px;
+    user-select: none;
 `
 
 const Dock = styled.div`
@@ -32,9 +33,7 @@ const Dock = styled.div`
     pointer-events: ${props => props.dockOpen ? "auto" : "none"};
 `;
 
-function Menu(props) {
-    const [dockOpen, setDockOpen] = useState(false)
-
+function Menu({ dockOpen, setDockOpen, ...props }) {
     return (
         <>
             <DockButton setDockOpen={setDockOpen} dockOpen={dockOpen} />

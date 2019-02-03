@@ -38,8 +38,13 @@ function useIterator(dataLength) {
 
 
 
-function Viewer({ galleryData, viewMode }, props) {
+function Viewer({ galleryData, viewMode, viewerRef }) {
     const [iterator, incrementIterator] = useIterator(galleryData.length);
+
+    function handleKeyDown(e) {
+      if (e.keyCode === 32)
+        incrementIterator();
+    }
 
     useEffect(() => {
       const timeout = setTimeout(() => {
@@ -51,7 +56,12 @@ function Viewer({ galleryData, viewMode }, props) {
     }, [iterator, viewMode])
 
     return ( 
-        <ImagesContainer onClick={() => incrementIterator()}>
+        <ImagesContainer
+          onClick={() => incrementIterator()}
+          tabIndex="0"
+          onKeyDown={handleKeyDown}
+          ref={viewerRef}
+        >
           <PrimaryImage
             src={galleryData[iterator]}
             onError={incrementIterator}
