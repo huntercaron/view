@@ -3,18 +3,17 @@ import styled from 'styled-components';
 import { TweenMax, Linear } from 'gsap'
 
 const Container = styled.div`
-    width: 42px;
-    height: 45px;
+  width: 42px;
+  height: 42px;
 
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    /* background-color: pink; */
-    mix-blend-mode: difference !important;
-
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  mix-blend-mode: difference;
 `;
 
 const SVG = styled.svg`
@@ -36,34 +35,18 @@ function getCoordinatesFromPercentage(percentage) {
     return [x, y];
 }
 
-const CountdownCircle = () => {
+const CountdownCircle = ({ iterator }) => {
   const [progress, setProgress] = useState(0)
   const circleElement = useRef(null);
-  // useEffect on change of... something? image number
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     if (progress >= 158)
-  //       setProgress(0)
-  //     else
-  //       setProgress(prevProgress => (prevProgress+1))
-  //   }, 50)
-  // }, [])
 
   useEffect(() => {
-    TweenMax.to(circleElement.current, 10, { strokeDasharray: "158 158",  ease: Linear.easeNone, repeat: -1 })
-  }, [])
-
+    TweenMax.set(circleElement.current, { strokeDasharray: "0 158" })
+    TweenMax.to(circleElement.current, 6, { strokeDasharray: "158 158",  ease: Linear.easeNone })
+  }, [iterator])
 
   return (
     <Container>
-      <SVG width={30} height={30} viewBox="0 0 100 100">
-        <filter id="f1" x="0" y="0" width="1" height="1">
-          <feImage xlinkHref="#p1" result="p1"/>
-          <feImage xlinkHref="#p2" result="p2"/>
-          <feBlend mode="screen" in="p1" in2="p2" />
-        </filter>
-
+      <SVG width={26} height={26} viewBox="0 0 100 100">
         <circle 
           cx="50" 
           cy="50" 
@@ -72,8 +55,7 @@ const CountdownCircle = () => {
           strokeWidth="50" 
           fill="none"
           ref={circleElement}
-
-          strokeDasharray={`${progress} 158`}
+          strokeDasharray={`0 158`}
         />
       </SVG>
     </Container>

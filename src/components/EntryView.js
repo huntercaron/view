@@ -1,15 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import styled, { keyframes } from 'styled-components';
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
+import styled from 'styled-components';
+import { fadeIn } from '../utils'
 
 const InputContainer = styled.form`
   top: 0;
@@ -34,13 +25,13 @@ const LinkInput = styled.input`
   border-radius: 50px;
   border: 1.5px solid black;
   width: 70%;
-  height: 50px;
+  height: 52px;
   font-size: 1.6rem;
   padding-left: 22px;
   font-family: 'Courier New', Courier, monospace;
 
-  transition: all 200ms ease-out;
-  width: ${props => props.submitted ? "50px" : "70%"};
+  transition: all 250ms ease-out;
+  width: ${props => props.submitted ? "52px" : "70%"};
   transform: translateX(${props => props.submitted ? "25px" : "0"});
   
   ${'' /* width: 50px; */}

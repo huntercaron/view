@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import CountdownCicle from './CountdownCircle'
-import FastAverageColor from 'fast-average-color/dist/index.es6';
+import { fadeIn } from '../utils'
 
 const ImagesContainer = styled.div`
   top: 0;
@@ -10,11 +10,14 @@ const ImagesContainer = styled.div`
   z-index: 0;
   width: 100%;
   height: 100%;
+
+  animation: ${fadeIn} 300ms ease-in;
 `
 
 const PrimaryImage = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `
 
 const HiddenImage = styled.img`
@@ -35,44 +38,22 @@ function useIterator(dataLength) {
 
 
 
-function Viewer({ galleryData }, props) {
+function Viewer({ galleryData, viewMode }, props) {
     const [iterator, incrementIterator] = useIterator(galleryData.length);
-    const imageEl = useRef(null);
-    const ref = useRef(null);
-
-    function getImageColor() {
-      let avgColor = ref.current; 
-      if (avgColor !== null) {
-        return avgColor;
-      }
-      let newAvgColor = new ColorThief();
-      ref.current = newAvgColor;
-      return newAvgColor;
-    }
-
-    function idk() {
-      console.log(getImageColor().getColor(imageEl.current));
-    }
 
     useEffect(() => {
-      // console.log(imageEl.current.)
-    }, [])
-    
-    useLayoutEffect(() => {
-    }, [iterator])
-
+      const timeout = setTimeout(() => incrementIterator(), 6000*0.98)
+      return () => clearTimeout(timeout);
+    }, [iterator, viewMode])
 
     return ( 
         <ImagesContainer onClick={incrementIterator}>
-          <PrimaryImage
-            src={galleryData[iterator]}
-            ref={imageEl}
-            onLoad={idk}
-          />
-          {/* <img src={galleryData[iterator]} onLoad={idk}/> */}
+          <PrimaryImage src={galleryData[iterator]} />
           <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
 
-          <CountdownCicle />
+          {viewMode === "TIMER" &&
+            <CountdownCicle iterator={iterator}/>
+          }
         </ImagesContainer>
     )
 }

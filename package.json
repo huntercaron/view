@@ -22,7 +22,6 @@
     "electron-debug": "^2.1.0",
     "electron-drag": "^1.2.0",
     "electron-is-dev": "^1.0.1",
-    "fast-average-color": "^4.3.0",
     "gsap": "^2.0.2",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",

@@ -1,3 +1,5 @@
+import { keyframes } from 'styled-components';
+
 function shuffleArray(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -21,4 +23,18 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export { shuffleArray, timeout }
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const viewModes = {
+    click: "CLICK"
+}
+
+export { shuffleArray, timeout, fadeIn }

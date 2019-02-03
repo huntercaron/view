@@ -4,6 +4,7 @@ import { shuffleArray, timeout } from '../utils/'
 
 import EntryView from './EntryView'
 import Viewer from './Viewer';
+import Menu from './Menu'
 import CountdownCircle from './CountdownCircle'
 
 const Container = styled.div`
@@ -67,12 +68,15 @@ function useDataFetch() {
 
 function App() {
     const [galleryData, fetchGalleryData] = useDataFetch();
+    const [viewMode, setViewMode] = useState("TIMER")
     
     return (
         <Container>
-            
             {galleryData ? (
-                <Viewer galleryData={galleryData}/>
+                <>
+                    <Menu viewMode={viewMode} setViewMode={setViewMode}/>
+                    <Viewer viewMode={viewMode} galleryData={galleryData}/>
+                </>
             ):(
                 <EntryView fetchData={fetchGalleryData}/>
             )}
