@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
-import { TimelineMax, TweenMax, Power0, Power3, Expo, Sine } from 'gsap'
 
 import MenuItem from './MenuItem';
 import DockButton from './DockButton'
@@ -28,7 +27,6 @@ const Dock = styled.div`
     border: 1.5px solid black;
     background-color: white;
     transition: opacity 150ms ease-out, transform 250ms ease-out;
-
     transform: translateY(${props => props.dockOpen ? 0 : "1px"});
     opacity: ${props => props.dockOpen ? 1 : 0};
     pointer-events: ${props => props.dockOpen ? "auto" : "none"};
@@ -39,7 +37,7 @@ function Menu(props) {
 
     return (
         <>
-            <DockButton setDockOpen={setDockOpen} dockOpen={dockOpen}/>
+            <DockButton setDockOpen={setDockOpen} dockOpen={dockOpen} />
 
             <Container>
                 <Dock dockOpen={dockOpen}>

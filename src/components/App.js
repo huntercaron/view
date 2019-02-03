@@ -5,7 +5,6 @@ import { shuffleArray, timeout } from '../utils/'
 import EntryView from './EntryView'
 import Viewer from './Viewer';
 import Menu from './Menu'
-import CountdownCircle from './CountdownCircle'
 
 const Container = styled.div`
   width: 100%;
@@ -64,23 +63,26 @@ function useDataFetch() {
     }]
 }
 
-
+export const WindowHoverContext = React.createContext(false);
 
 function App() {
     const [galleryData, fetchGalleryData] = useDataFetch();
     const [viewMode, setViewMode] = useState("TIMER")
+    const [windowHover, setWindowHover] = useState(false)
     
     return (
-        <Container>
-            {galleryData ? (
-                <>
-                    <Menu viewMode={viewMode} setViewMode={setViewMode}/>
-                    <Viewer viewMode={viewMode} galleryData={galleryData}/>
-                </>
-            ):(
-                <EntryView fetchData={fetchGalleryData}/>
-            )}
-
+        <Container onMouseEnter={() => setWindowHover(true)} onMouseLeave={() => setWindowHover(false)}>
+            <WindowHoverContext.Provider value={windowHover}>
+                {galleryData ? (
+                    <> 
+                        <Menu viewMode={viewMode} setViewMode={setViewMode}/>
+                        <Viewer viewMode={viewMode} galleryData={galleryData}/>
+                    </>
+                ):(
+                    <EntryView fetchData={fetchGalleryData}/>
+                )}
+            </WindowHoverContext.Provider>
+            
             <GlobalStyle />
         </Container>
     );

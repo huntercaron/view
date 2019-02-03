@@ -33,8 +33,4 @@ const fadeIn = keyframes`
   }
 `;
 
-const viewModes = {
-    click: "CLICK"
-}
-
 export { shuffleArray, timeout, fadeIn }

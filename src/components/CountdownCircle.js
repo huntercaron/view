@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components';
 import { TweenMax, Linear } from 'gsap'
 
@@ -28,7 +28,6 @@ const SVG = styled.svg`
 `
 
 const CountdownCircle = ({ iterator }) => {
-  const [progress, setProgress] = useState(0)
   const circleElement = useRef(null);
 
   useEffect(() => {

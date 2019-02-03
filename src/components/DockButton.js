@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 
+import { WindowHoverContext } from './App'
 import xIcon from '../assets/x.svg'
 import xWhiteIcon from '../assets/x_white.svg'
 
@@ -12,6 +13,7 @@ const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     cursor: pointer;
+    user-select: none;
 `;
 
 const Button = styled.div`
@@ -45,6 +47,7 @@ const ButtonInner = styled.div`
     background-color: black;
     opacity: 0;
     transition: opacity 120ms ease-out;
+    pointer-events: none;
 
     ${Button}:hover & {
         opacity: ${props => props.dockOpen ? 1 : 0};
@@ -61,6 +64,7 @@ const CircleContainer = styled.div`
     z-index: 2;
     display: flex;
     justify-content: center;
+    pointer-events: none;
 `;
 
 const Circle = styled.div`
@@ -70,13 +74,19 @@ const Circle = styled.div`
     background-color: transparent;
     border-radius: 50%;
     border: 1.5px solid white;
+    pointer-events: auto;
+    transition: opacity 120ms ease-out;
+    opacity: ${props => props.windowHover ? 1 : 0};
 `;
 
 const CloseIcon = styled.img`
+    pointer-events: none;
     opacity: ${props => props.dockOpen ? 1 : 0};
 `;
 
 function DockButton({ setDockOpen, dockOpen }) {
+    const windowHover = useContext(WindowHoverContext);
+
     return (
         <>
             <ButtonContainer>
@@ -90,7 +100,7 @@ function DockButton({ setDockOpen, dockOpen }) {
             </ButtonContainer>
 
             <CircleContainer>
-                <Circle />
+                <Circle windowHover={windowHover}/>
             </CircleContainer>
         </>
     )
