@@ -65,6 +65,13 @@ function createWindow() {
     {
       role: 'window',
       submenu: [
+        {
+          label: 'Keep on Top',
+          type: 'checkbox', 
+          checked: mainWindow.isAlwaysOnTop(),
+          click() { mainWindow.setAlwaysOnTop(!mainWindow.isAlwaysOnTop()) }
+        },
+        { type: 'separator' },
         { role: 'minimize' },
         { role: 'close' }
       ]

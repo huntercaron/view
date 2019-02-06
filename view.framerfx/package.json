@@ -1,0 +1,17 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.4.16",
+		"framer": "^0.10.5"
+	},
+	"peerDependencies": {
+		"framer": "^0.10.5",
+		"react": "^16.3.0",
+		"react-dom": "^16.3.0"
+	},
+	"framer": {
+		"id": "49dc7d60-1b84-4a82-b702-23d84dd8c12a"
+	},
+	"author": "Hunter Caron"
+}
