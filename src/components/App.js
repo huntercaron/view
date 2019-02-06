@@ -30,14 +30,17 @@ function useDataFetch() {
         const firstPageData = await firstPageResponse.json();
         const randomizedData = shuffleArray(cleanData(filterImages(firstPageData.contents)));
         const pages = Math.ceil(firstPageData.length/firstPageData.per);
-        
-        if (randomizedData.length < firstPageData.per) {
+
+
+        if (firstPageData.length < firstPageData.per) {
             await timeout(800);
             setGalleryData(randomizedData);
             return;
         }
             
         const pagesData = [];
+
+        console.log(pages);
 
         for(var i = 1; i <= pages; i++) {
             pagesData.push(fetch(makeUrl(slug, i)));

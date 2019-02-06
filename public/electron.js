@@ -20,6 +20,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 500, height: 500, frame: false, 
     icon: 'icon.png',
+    alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: false
     }});
