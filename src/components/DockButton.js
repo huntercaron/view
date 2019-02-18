@@ -30,6 +30,7 @@ const Button = styled.div`
     transition: opacity 120ms ease-out;
     
     &:hover {
+        transition: opacity 120ms ease-out;
         opacity: 1;
     }
 `

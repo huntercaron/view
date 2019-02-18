@@ -74,6 +74,7 @@ function App() {
     const [viewMode, setViewMode] = useState("TIMER")
     const [windowHover, setWindowHover] = useState(false)
     const [dockOpen, setDockOpen] = useState(false)
+    const [imageFit, setImageFit] = useState(false)
 
     useEffect(() => {
         console.log(viewerEl)
@@ -86,8 +87,8 @@ function App() {
             <WindowHoverContext.Provider value={windowHover}>
                 {galleryData ? (
                     <> 
-                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} setDockOpen={setDockOpen}/>
-                        <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl}/>
+                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} setDockOpen={setDockOpen} imageFit={imageFit} setImageFit={setImageFit}/>
+                        <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl} imageFit={imageFit}/>
                     </>
                 ):(
                     <EntryView fetchData={fetchGalleryData}/>

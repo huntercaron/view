@@ -17,12 +17,25 @@ const ImagesContainer = styled.div`
 const PrimaryImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: ${({imageFit}) => imageFit ? "contain" : "cover"};
+  z-index: 1;
+  transform: scale(1);
 `
 
 const HiddenImage = styled.img`
   visibility: hidden;
   position: absolute;
+`
+
+const BgImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5);
+  filter: blur(100px);
+  top: 0;
+  left: 0;
+  z-index: 0;
 `
 
 function useIterator(dataLength) {
@@ -38,7 +51,7 @@ function useIterator(dataLength) {
 
 
 
-function Viewer({ galleryData, viewMode, viewerRef }) {
+function Viewer({ galleryData, viewMode, viewerRef, imageFit }) {
     const [iterator, incrementIterator] = useIterator(galleryData.length);
 
     function handleKeyDown(e) {
@@ -62,11 +75,14 @@ function Viewer({ galleryData, viewMode, viewerRef }) {
           onKeyDown={handleKeyDown}
           ref={viewerRef}
         >
+          
+          {imageFit && <BgImage src={galleryData[iterator]}/>}
+          <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
           <PrimaryImage
             src={galleryData[iterator]}
             onError={incrementIterator}
+            imageFit={imageFit}
           />
-          <HiddenImage src={iterator === galleryData.length-1 ? galleryData[0] : galleryData[iterator+1]} />
 
           {viewMode === "TIMER" &&
             <CountdownCicle iterator={iterator}/>

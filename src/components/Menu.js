@@ -33,7 +33,7 @@ const Dock = styled.div`
     pointer-events: ${props => props.dockOpen ? "auto" : "none"};
 `;
 
-function Menu({ dockOpen, setDockOpen, ...props }) {
+function Menu({ dockOpen, setDockOpen, setImageFit, imageFit, ...props }) {
     return (
         <>
             <DockButton setDockOpen={setDockOpen} dockOpen={dockOpen} />
@@ -43,6 +43,8 @@ function Menu({ dockOpen, setDockOpen, ...props }) {
                     <MenuItem {...props} icon={TimerIcon} menuString={"TIMER"}/>
                     {/* <MenuItem {...props} icon={ScrollIcon} menuString={"SCROLL"}/> */}
                     <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
+                    <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
+                    <button onClick={() => setImageFit(!imageFit)}>setImageFit</button>
                 </Dock>
             </Container>
         </>    
