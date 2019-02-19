@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
+// import { useCatchedFetch } from 'use-local-cache'
 import { shuffleArray, timeout } from '../utils/'
 
 import EntryView from './EntryView'
