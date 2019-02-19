@@ -1,12 +1,15 @@
 import { Data, animate, Override, Animatable } from "framer"
 
+const drawerClosed = 0;
+const drawerOpen = 167;
+
 const data = Data({ 
     scale: Animatable(1),
     drawerOpen: true
 })
 
 const layout = Data({ 
-    drawerY: Animatable(-167),
+    drawerY: Animatable(drawerClosed),
     xOpacity: Animatable(0)
 })
 
@@ -30,14 +33,14 @@ export const MenuButton: Override = () => {
     return {
         onTap() {
             if (data.drawerOpen) {
-                animate.spring(layout.drawerY, -167, {
+                animate.spring(layout.drawerY, drawerClosed, {
                 tension: 200,
                 friction: 25,
             })
                 animate.easeOut(layout.xOpacity, 0, { duration: 0.25 })
                 data.drawerOpen = false;
             } else {
-                animate.spring(layout.drawerY, 0, {
+                animate.spring(layout.drawerY, drawerOpen, {
                 tension: 200,
                 friction: 25,
             })

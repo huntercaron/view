@@ -364,3 +364,130 @@
 [2019-02-18 00:34:27.7020] - INFO - Marking changed: false
 [2019-02-18 00:34:28.7600] - INFO - Backing up to /Users/huntercaron/Documents/School/fourth-year/workshop/view/view.framerfx/.backups/2019-02-18 00.34.28.zip
 [2019-02-18 00:34:48.8410] - INFO - Marking changed: false
+[2019-02-18 12:19:40.8710] - INFO - Reading from /Users/hunterc/Documents/bloom/view/view.framerfx (origin); preserving existing contents of project folder: true
+[2019-02-18 12:19:40.8830] - INFO - Done reading
+[2019-02-18 12:19:40.8850] - INFO - Marking changed: false
+[2019-02-18 12:19:41.4910] - ERROR - No installed Framer version
+[2019-02-18 12:19:41.4940] - ERROR - No installed Framer version
+[2019-02-18 12:19:42.0610] - INFO - GET 200 /design/document.json 0 B (6ms)
+[2019-02-18 12:19:43.1650] - ERROR - No installed Framer version
+[2019-02-18 12:19:45.8920] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (4ms)
+[2019-02-18 12:19:53.8230] - INFO - Reading from /Users/hunterc/Documents/bloom/view/view.framerfx (origin); preserving existing contents of project folder: true
+[2019-02-18 12:19:53.8390] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “512” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/512/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600003d161c0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:19:53.8390] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “1024” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/1024/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600003d7eb50 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:19:53.8400] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “2048” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/2048/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600003d7ecd0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:19:53.8400] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “4096” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/4096/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600003d7f030 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:19:53.8400] - INFO - Done reading
+[2019-02-18 12:19:53.8440] - INFO - Marking changed: false
+[2019-02-18 12:19:55.0670] - INFO - GET 200 /design/document.json 0 B (6ms)
+[2019-02-18 12:19:57.6280] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (2ms)
+[2019-02-18 12:19:59.0970] - INFO - GET 404 /node_modules/framer/build/framer.debug.js 180 B (2ms)
+[2019-02-18 12:19:59.7620] - ERROR - No installed Framer version
+[2019-02-18 12:19:59.7670] - ERROR - Project does not have a Framer Library installed.
+
+Try to re-open the project.
+[2019-02-18 12:20:54.7550] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.20.54.zip
+[2019-02-18 12:21:10.6830] - INFO - Marking changed: false
+[2019-02-18 12:21:32.7140] - INFO - Marking changed: false
+[2019-02-18 12:21:42.6590] - INFO - Reading from /Users/hunterc/Documents/bloom/view/view.framerfx (origin); preserving existing contents of project folder: true
+[2019-02-18 12:21:42.6740] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “512” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/512/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600002f291d0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:21:42.6740] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “1024” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/1024/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600002e83c60 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:21:42.6750] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “2048” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/2048/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600002e83e10 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:21:42.6750] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “4096” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/4096/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600002f240c0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 12:21:42.6750] - INFO - Done reading
+[2019-02-18 12:21:42.6780] - INFO - Marking changed: false
+[2019-02-18 12:21:43.2540] - ERROR - No installed Framer version
+[2019-02-18 12:21:43.2560] - ERROR - No installed Framer version
+[2019-02-18 12:21:43.8130] - INFO - GET 200 /design/document.json 0 B (6ms)
+[2019-02-18 12:21:43.9380] - ERROR - No installed Framer version
+[2019-02-18 12:21:46.7000] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (4ms)
+[2019-02-18 12:21:48.3380] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (5ms)
+[2019-02-18 12:21:48.7620] - INFO - GET 200 /design/images/9efZVHK7pQhJKpwxiONm4c4xtE.png 1.15 MB (1ms)
+[2019-02-18 12:22:43.2820] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.22.43.zip
+[2019-02-18 12:23:44.4520] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.23.44.zip
+[2019-02-18 12:25:30.8470] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (2ms)
+[2019-02-18 12:26:46.6640] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.26.46.zip
+[2019-02-18 12:27:47.4770] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.27.47.zip
+[2019-02-18 12:28:48.4720] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.28.48.zip
+[2019-02-18 12:29:48.9350] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.29.48.zip
+[2019-02-18 12:31:51.3750] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.31.51.zip
+[2019-02-18 12:32:52.5010] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.32.52.zip
+[2019-02-18 12:33:53.4790] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.33.53.zip
+[2019-02-18 12:34:54.2420] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.34.54.zip
+[2019-02-18 12:35:09.2650] - INFO - Marking changed: false
+[2019-02-18 12:35:11.9030] - INFO - Marking changed: false
+[2019-02-18 12:35:27.6530] - INFO - Marking changed: false
+[2019-02-18 12:35:54.9380] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.35.54.zip
+[2019-02-18 12:36:56.4840] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.36.56.zip
+[2019-02-18 12:37:24.5690] - INFO - Marking changed: false
+[2019-02-18 12:37:56.5820] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.37.56.zip
+[2019-02-18 12:38:57.2360] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.38.57.zip
+[2019-02-18 12:39:32.3630] - INFO - Marking changed: false
+[2019-02-18 12:39:57.9530] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 12.39.57.zip
+[2019-02-18 15:46:15.4500] - INFO - Marking changed: false
+[2019-02-18 15:47:05.5330] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (3ms)
+[2019-02-18 15:47:49.7530] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 15.47.49.zip
+[2019-02-18 15:53:55.6540] - ERROR - Error [ERR_STREAM_DESTROYED]: Cannot call write after a stream was destroyed
+[2019-02-18 15:53:55.6540] - ERROR -     at doWrite (_stream_writable.js:406:19)
+[2019-02-18 15:53:55.6540] - ERROR -     at writeOrBuffer (_stream_writable.js:394:5)
+[2019-02-18 15:53:55.6540] - ERROR -     at Socket.Writable.write (_stream_writable.js:294:11)
+[2019-02-18 15:53:55.6540] - ERROR -     at Array.logRequest (/Applications/Framer X.app/Contents/Resources/Server/node_modules/morgan/index.js:130:14)
+[2019-02-18 15:53:55.6540] - ERROR -     at listener (/Applications/Framer X.app/Contents/Resources/Server/node_modules/on-finished/index.js:169:15)
+[2019-02-18 15:53:55.6540] - ERROR -     at onFinish (/Applications/Framer X.app/Contents/Resources/Server/node_modules/on-finished/index.js:100:5)
+[2019-02-18 15:53:55.6540] - ERROR -     at callback (/Applications/Framer X.app/Contents/Resources/Server/node_modules/ee-first/index.js:55:10)
+[2019-02-18 15:53:55.6550] - ERROR -     at ServerResponse.onevent (/Applications/Framer X.app/Contents/Resources/Server/node_modules/ee-first/index.js:93:5)
+[2019-02-18 15:53:55.6550] - ERROR -     at ServerResponse.emit (events.js:187:15)
+[2019-02-18 15:53:55.6550] - ERROR -     at ServerResponse.EventEmitter.emit (domain.js:442:20)
+[2019-02-18 15:53:55.6550] - ERROR -     at onFinish (_http_outgoing.js:678:10)
+[2019-02-18 15:53:55.6550] - ERROR -     at afterWrite (_stream_writable.js:480:3)
+[2019-02-18 15:53:55.6550] - ERROR -     at process._tickCallback (internal/process/next_tick.js:63:19)
+[2019-02-18 15:54:05.1620] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 15.54.05.zip
+[2019-02-18 15:54:58.6910] - INFO - Marking changed: false
+[2019-02-18 15:55:05.9250] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 15.55.05.zip
+[2019-02-18 15:55:34.8610] - INFO - Marking changed: false
+[2019-02-18 15:55:42.1240] - INFO - Reading from /Users/hunterc/Documents/bloom/view/view.framerfx (origin); preserving existing contents of project folder: true
+[2019-02-18 15:55:42.1460] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “512” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/512/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x60000252c000 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 15:55:42.1460] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “1024” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/1024/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x60000252cae0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 15:55:42.1470] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “2048” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/2048/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x60000252d320 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 15:55:42.1470] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “4096” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/4096/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x60000252d710 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-18 15:55:42.1470] - INFO - Done reading
+[2019-02-18 15:55:42.1500] - INFO - Marking changed: false
+[2019-02-18 15:55:43.0700] - INFO - GET 200 /design/document.json 0 B (7ms)
+[2019-02-18 15:55:44.5490] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (3ms)
+[2019-02-18 15:56:43.7170] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 15.56.43.zip
+[2019-02-18 15:57:55.8680] - INFO - Marking changed: false
+[2019-02-18 16:33:11.2630] - INFO - Marking changed: false
+[2019-02-18 16:34:04.1710] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-18 16.34.04.zip
+[2019-02-19 09:32:29.6060] - INFO - Reading from /Users/hunterc/Documents/bloom/view/view.framerfx (origin); preserving existing contents of project folder: true
+[2019-02-19 09:32:29.6550] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “512” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/512/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600001a30d20 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-19 09:32:29.6550] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “1024” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/1024/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600001a304b0 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-19 09:32:29.6560] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “2048” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/2048/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600001a30f90 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-19 09:32:29.6560] - INFO - Couldn’t create temporary image cache symlink: Error Domain=NSCocoaErrorDomain Code=516 "The file “9efZVHK7pQhJKpwxiONm4c4xtE.png” couldn’t be saved in the folder “4096” because a file with the same name already exists." UserInfo={NSFilePath=/Users/hunterc/Documents/bloom/view/view.framerfx/.cache/images/4096/9efZVHK7pQhJKpwxiONm4c4xtE.png, NSUnderlyingError=0x600001a31380 {Error Domain=NSPOSIXErrorDomain Code=17 "File exists"}}
+[2019-02-19 09:32:29.6560] - INFO - Done reading
+[2019-02-19 09:32:29.6600] - INFO - Marking changed: false
+[2019-02-19 09:32:30.7910] - INFO - GET 200 /design/document.json 0 B (6ms)
+[2019-02-19 09:32:33.7430] - INFO - GET 200 /node_modules/framer/build/framer.debug.js 0 B (3ms)
+[2019-02-19 09:32:40.1250] - INFO - GET 304 /design/images/9efZVHK7pQhJKpwxiONm4c4xtE.png 0 B (2ms)
+[2019-02-19 09:33:30.5010] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-19 09.33.30.zip
+[2019-02-19 09:33:35.0800] - DEBUG - [Save session: 0] Started, operation: saveOperation
+[2019-02-19 09:33:35.0800] - DEBUG - [Save session: 0] Before container.writeChanges
+[2019-02-19 09:33:35.0940] - DEBUG - [Save session: 0] Before waitUsingRecursiveRunLoop
+[2019-02-19 09:33:35.1040] - DEBUG - [Save session: 0] Completed container.writeChanges
+[2019-02-19 09:33:35.1040] - DEBUG - [Save session: 0] Completed waitUsingRecursiveRunLoop
+[2019-02-19 09:33:35.1150] - INFO - Marking changed: false
+[2019-02-19 09:33:35.1180] - DEBUG - [Save session: 0] Completed super.save
+[2019-02-19 09:33:48.8430] - DEBUG - [Save session: 1] Started, operation: saveOperation
+[2019-02-19 09:33:48.8430] - DEBUG - [Save session: 1] Before container.writeChanges
+[2019-02-19 09:33:48.8430] - DEBUG - [Save session: 1] Before waitUsingRecursiveRunLoop
+[2019-02-19 09:33:49.5070] - DEBUG - [Save session: 1] Completed container.writeChanges
+[2019-02-19 09:33:49.5070] - DEBUG - [Save session: 1] Completed waitUsingRecursiveRunLoop
+[2019-02-19 09:33:49.5100] - INFO - Marking changed: false
+[2019-02-19 09:33:49.5120] - DEBUG - [Save session: 1] Completed super.save
+[2019-02-19 09:34:30.6280] - INFO - Backing up to /Users/hunterc/Documents/bloom/view/view.framerfx/.backups/2019-02-19 09.34.30.zip
+[2019-02-19 09:36:07.9410] - DEBUG - [Save session: 2] Started, operation: saveOperation
+[2019-02-19 09:36:07.9410] - DEBUG - [Save session: 2] Before container.writeChanges
+[2019-02-19 09:36:07.9630] - DEBUG - [Save session: 2] Before waitUsingRecursiveRunLoop
+[2019-02-19 09:36:07.9730] - DEBUG - [Save session: 2] Completed container.writeChanges
+[2019-02-19 09:36:07.9730] - DEBUG - [Save session: 2] Completed waitUsingRecursiveRunLoop
+[2019-02-19 09:36:07.9740] - INFO - Marking changed: false
+[2019-02-19 09:36:07.9770] - DEBUG - [Save session: 2] Completed super.save
