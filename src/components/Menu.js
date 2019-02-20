@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components';
 
 import MenuItem from './MenuItem';
-import DockButton from './DockButton'
 import TimerIcon from '../assets/clock.svg'
 import MouseIcon from '../assets/mouse.svg'
 // import ScrollIcon from '../assets/scroll.svg'
 
 const Container = styled.div`
+    position: absolute;
     width: 100%;
     z-index: 3;
     display: flex;
@@ -35,19 +35,15 @@ const Dock = styled.div`
 
 function Menu({ dockOpen, setDockOpen, setImageFit, imageFit, ...props }) {
     return (
-        <>
-            <DockButton setDockOpen={setDockOpen} dockOpen={dockOpen} />
-
-            <Container>
-                <Dock dockOpen={dockOpen}>
-                    <MenuItem {...props} icon={TimerIcon} menuString={"TIMER"}/>
-                    {/* <MenuItem {...props} icon={ScrollIcon} menuString={"SCROLL"}/> */}
-                    <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
-                    <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
-                    <button onClick={() => setImageFit(!imageFit)}>setImageFit</button>
-                </Dock>
-            </Container>
-        </>    
+        <Container>
+            <Dock dockOpen={dockOpen}>
+                <MenuItem {...props} icon={TimerIcon} menuString={"TIMER"}/>
+                {/* <MenuItem {...props} icon={ScrollIcon} menuString={"SCROLL"}/> */}
+                <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
+                <MenuItem {...props} icon={MouseIcon} menuString={"CLICK"}/>
+                <button onClick={() => setImageFit(!imageFit)}>setImageFit</button>
+            </Dock>
+        </Container>
     )
 }
 

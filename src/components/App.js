@@ -1,18 +1,50 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
-// import { useCatchedFetch } from 'use-local-cache'
-import { shuffleArray, timeout } from '../utils/'
+import { useCatchedFetch } from 'use-local-cache'
+import { shuffleArray, timeout, fadeIn } from '../utils/'
+import { TweenMax } from 'gsap'
 
 import EntryView from './EntryView'
+import DockButton from './DockButton'
 import Viewer from './Viewer';
 import Menu from './Menu'
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  position: relative;
   -webkit-app-region: drag;
   background-color: white;
+  transform: none !important;
   font-family: 'Courier New', Courier, monospace;
+`
+
+const ViewerContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.12);
+    z-index: 4;
+    overflow: hidden;
+`;
+
+const InputContainer = styled.div`
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+    animation: ${fadeIn} 300ms ease-in;
+
+    transition: opacity 200ms 400ms ease-out;
+    opacity: ${props => props.submitted ? 0 : 1} !important;
+    z-index: 10;
 `
 
 function useDataFetch() {
@@ -71,6 +103,7 @@ export const WindowHoverContext = React.createContext(false);
 
 function App() {
     const viewerEl = useRef(null);
+    const viewerContainerEl = useRef(null);
     const [galleryData, fetchGalleryData] = useDataFetch();
     const [viewMode, setViewMode] = useState("TIMER")
     const [windowHover, setWindowHover] = useState(false)
@@ -78,9 +111,13 @@ function App() {
     const [imageFit, setImageFit] = useState(false)
 
     useEffect(() => {
-        console.log(viewerEl)
-        if (!dockOpen && viewerEl.current)
-            viewerEl.current.focus();
+        const focusGallery = () => { viewerEl.current.focus() };
+
+        if (viewerContainerEl.current && dockOpen)
+            TweenMax.to(viewerContainerEl.current, 0.25, { y: 100, borderRadius: 12  })
+        else if (viewerContainerEl.current)
+            TweenMax.to(viewerContainerEl.current, 0.25, { y: 0, borderRadius: 4,  onComplete: focusGallery  })
+
     }, [dockOpen, galleryData]);
     
     return (
@@ -88,11 +125,16 @@ function App() {
             <WindowHoverContext.Provider value={windowHover}>
                 {galleryData ? (
                     <> 
-                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} setDockOpen={setDockOpen} imageFit={imageFit} setImageFit={setImageFit}/>
-                        <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl} imageFit={imageFit}/>
+                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} imageFit={imageFit} setImageFit={setImageFit}/>
+                        <ViewerContainer open={dockOpen} ref={viewerContainerEl}>
+                            <DockButton dockOpen={dockOpen} setDockOpen={setDockOpen} />
+                            <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl} imageFit={imageFit}/>
+                        </ViewerContainer>
                     </>
                 ):(
-                    <EntryView fetchData={fetchGalleryData}/>
+                    <InputContainer>
+                        <EntryView fetchData={fetchGalleryData}/>
+                    </InputContainer>
                 )}
             </WindowHoverContext.Provider>
             
