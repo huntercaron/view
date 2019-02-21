@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
-import { useCatchedFetch } from 'use-local-cache'
+// import { useCatchedFetch } from 'use-local-cache'
 import { shuffleArray, timeout, fadeIn } from '../utils/'
 import { TweenMax } from 'gsap'
 
-import EntryView from './EntryView'
+import EntryField from './EntryField'
 import DockButton from './DockButton'
 import Viewer from './Viewer';
 import Menu from './Menu'
@@ -16,7 +16,7 @@ const Container = styled.div`
   -webkit-app-region: drag;
   background-color: white;
   transform: none !important;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Favorit Trial Pro', 'Courier New', Courier, monospace;
 `
 
 const ViewerContainer = styled.div`
@@ -39,8 +39,9 @@ const InputContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: white;
-
+    padding: 0 15%;
     animation: ${fadeIn} 300ms ease-in;
+    padding-bottom: 12px;
 
     transition: opacity 200ms 400ms ease-out;
     opacity: ${props => props.submitted ? 0 : 1} !important;
@@ -114,7 +115,7 @@ function App() {
         const focusGallery = () => { viewerEl.current.focus() };
 
         if (viewerContainerEl.current && dockOpen)
-            TweenMax.to(viewerContainerEl.current, 0.25, { y: 100, borderRadius: 12  })
+            TweenMax.to(viewerContainerEl.current, 0.25, { y: 160, borderRadius: 11  })
         else if (viewerContainerEl.current)
             TweenMax.to(viewerContainerEl.current, 0.25, { y: 0, borderRadius: 4,  onComplete: focusGallery  })
 
@@ -125,7 +126,7 @@ function App() {
             <WindowHoverContext.Provider value={windowHover}>
                 {galleryData ? (
                     <> 
-                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} imageFit={imageFit} setImageFit={setImageFit}/>
+                        <Menu viewMode={viewMode} setViewMode={setViewMode} dockOpen={dockOpen} imageFit={imageFit} setImageFit={setImageFit} fetchData={fetchGalleryData}/>
                         <ViewerContainer open={dockOpen} ref={viewerContainerEl}>
                             <DockButton dockOpen={dockOpen} setDockOpen={setDockOpen} />
                             <Viewer viewMode={viewMode} galleryData={galleryData} viewerRef={viewerEl} imageFit={imageFit}/>
@@ -133,7 +134,7 @@ function App() {
                     </>
                 ):(
                     <InputContainer>
-                        <EntryView fetchData={fetchGalleryData}/>
+                        <EntryField fetchData={fetchGalleryData} setDockOpen={setDockOpen}/>
                     </InputContainer>
                 )}
             </WindowHoverContext.Provider>

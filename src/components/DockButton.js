@@ -7,7 +7,7 @@ import xWhiteIcon from '../assets/x_white.svg'
 
 const ButtonContainer = styled.div`
     position: relative;
-    margin: 16px 0 12px;
+    margin: 14px 0 12px;
     width: 100%;
     z-index: 3;
     display: flex;
@@ -56,9 +56,8 @@ const ButtonInner = styled.div`
 
 const CircleContainer = styled.div`
     position: absolute;
-    isolation: isolate;
     mix-blend-mode: difference;
-    top: 16px;
+    top: 14px;
     left: 0;
     width: 100%;
     z-index: 2;
