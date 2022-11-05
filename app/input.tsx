@@ -114,7 +114,7 @@ export function Input() {
     const cache = parsedCache ? new Map<number, ChannelInfo>(parsedCache) : null
 
     return (
-        <div>
+        <div style={{ padding: 10 }}>
             <InputContainer onSubmit={handleUrlSubmit} submitted={isUrlSubmitted}>
                 <LinkInput
                     autoFocus

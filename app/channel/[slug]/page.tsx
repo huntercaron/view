@@ -2,8 +2,8 @@ import "server-only"
 
 import { cookies, headers } from "next/headers"
 import { getAccessToken } from "../../../lib/getAccessToken"
-import { getData } from "../../../lib/getData"
 import { Cache } from "./cache"
+import { Viewer } from "./viewer"
 import { getArenaChannel } from "../../../lib/getArenaChannel"
 
 export default async function Channel(props) {
@@ -15,15 +15,9 @@ export default async function Channel(props) {
     const { channel, allContents } = await getArenaChannel(slug, accessToken)
 
     return (
-        <div>
+        <div className="">
             <Cache channel={channel} />
-            channel: {channel.title}
-            {allContents.map(block => (
-                <div key={block.id}>
-                    <img src={block.image?.thumb?.url} />
-                    <h3>{block.generated_title}</h3>
-                </div>
-            ))}
+            <Viewer contents={allContents} channel={channel} />
         </div>
     )
 }
