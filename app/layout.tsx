@@ -1,5 +1,4 @@
 import { cookies, headers } from "next/headers"
-import RootStyleRegistry from "./RootStyleRegistry"
 import { getAccessToken } from "../lib/getAccessToken"
 import "./global.css"
 import Login from "./login"
@@ -14,7 +13,7 @@ export default async function RootLayout({ children }) {
             </head>
             <body>
                 {!token && <Login />}
-                <RootStyleRegistry>{children}</RootStyleRegistry>
+                <>{children}</>
             </body>
         </html>
     )
