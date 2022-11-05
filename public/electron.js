@@ -16,7 +16,7 @@ debug()
 
 let mainWindow
 
-const prodUrl = "https://bloom-view.vercel.app"
+const prodUrl = "https://view.bloom.computer/"
 const devUrl = "http://localhost:3000"
 
 function createWindow() {
@@ -31,7 +31,7 @@ function createWindow() {
         },
     })
     // mainWindow.loadURL(isDev ? devUrl : `file://${path.join(__dirname, "../dist/index.html")}`)
-    mainWindow.loadURL("https://view.bloom.computer/")
+    mainWindow.loadURL(prodUrl)
     mainWindow.on("closed", () => (mainWindow = null))
     // mainWindow.webContents.openDevTools()
     mainWindow.setBackgroundColor("#fff")

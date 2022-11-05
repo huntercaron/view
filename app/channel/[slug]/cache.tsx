@@ -24,7 +24,7 @@ export function Cache({ channel }: { channel: Arena.Channel }) {
 
         cache.set(channel.id, reducedChannel)
 
-        localStorage.setItem(CHANNEL_CACHE_KEY, JSON.stringify([...cache]))
+        localStorage.setItem(CHANNEL_CACHE_KEY, JSON.stringify(Array.from(cache.values())))
     }, [channel])
 
     return null

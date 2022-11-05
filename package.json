@@ -10,10 +10,7 @@
   "repository": "https://github.com/huntercaron/view",
   "build": {
     "appId": "com.example.electron-cra",
-    "files": [
-      "dist/**/*",
-      "node_modules/**/*"
-    ],
+
     "directories": {
       "buildResources": "dist"
     }
