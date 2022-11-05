@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-};
+    experimental: {
+        appDir: true,
+        // enableUndici: true,
+    },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

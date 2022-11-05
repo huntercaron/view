@@ -1,1 +1,10 @@
-designs
+/*
+!api
+!vercel.json
+!*.html
+!package.json
+!yarn.lock
+!next.config.js
+!app
+!pages
+!lib
