@@ -1,26 +1,10 @@
 import "server-only"
+import Link from "next/link"
 
-import { cookies, headers } from "next/headers"
-import { getAccessToken } from "../../lib/getAccessToken"
-import { getData } from "../../lib/getData"
-
-export default async function Channel() {
-    const accessToken = await getAccessToken(cookies(), headers())
-
-    if (!accessToken) return <div>private channel</div>
-
-    const channel = await getData(accessToken)
-    const blocks = channel?.contents ?? []
-
+export default async function Channel(props) {
     return (
         <div>
-            channel:
-            {blocks.map(block => (
-                <div key={block.id}>
-                    <img src={block.image?.thumb?.url} />
-                    <h3>{block.generated_title}</h3>
-                </div>
-            ))}
+            channel not found. <Link href="/">Go back home?</Link>
         </div>
     )
 }
