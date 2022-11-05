@@ -11,11 +11,11 @@
   "build": {
     "appId": "com.example.electron-cra",
     "files": [
-      "build/**/*",
+      "dist/**/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "build"
+      "buildResources": "dist"
     }
   },
   "dependencies": {

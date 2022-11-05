@@ -30,7 +30,8 @@ function createWindow() {
             nodeIntegration: false,
         },
     })
-    mainWindow.loadURL(isDev ? devUrl : `file://${path.join(__dirname, "../build/index.html")}`)
+    // mainWindow.loadURL(isDev ? devUrl : `file://${path.join(__dirname, "../dist/index.html")}`)
+    mainWindow.loadURL("https://view.bloom.computer/")
     mainWindow.on("closed", () => (mainWindow = null))
     // mainWindow.webContents.openDevTools()
     mainWindow.setBackgroundColor("#fff")
