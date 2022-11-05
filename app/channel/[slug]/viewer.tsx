@@ -69,8 +69,6 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const nextIndex = iterator < shuffledContent.length - 1 ? iterator + 1 : 0
     const nextBlock = shuffledContent[nextIndex]
 
-    console.log(selectedBlock)
-
     return (
         <div
             onKeyDown={handleKeyDown}
