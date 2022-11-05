@@ -50,7 +50,7 @@ export function Input() {
             <form onSubmit={handleUrlSubmit}>
                 <input autoFocus placeholder="Are.na channel url…" type="text" value={url} onChange={handleUrlChange} />
 
-                <div>
+                <button>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                         <g transform="translate(3 4.5)">
                             <path
@@ -71,7 +71,7 @@ export function Input() {
                             ></path>
                         </g>
                     </svg>
-                </div>
+                </button>
             </form>
             {errorMessage && <p>{errorMessage}</p>}
             {isUrlSubmitted && !errorMessage && <p>loading…</p>}

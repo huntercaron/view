@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "es2020",
     "lib": [
       "dom",
       "dom.iterable",
@@ -9,6 +9,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
+    "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
