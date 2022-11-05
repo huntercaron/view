@@ -4,76 +4,8 @@ import React, { useState } from "react"
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import styled from "styled-components"
+
 import { CHANNEL_CACHE_KEY, ChannelInfo } from "./channel/[slug]/cache"
-
-const InputContainer = styled.form`
-    /* position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-`
-
-const LinkInput = styled.input`
-    /* outline: none;
-    border-radius: 50px;
-    border: 1.5px solid black;
-    height: 52px;
-    font-size: 16px;
-    padding-left: 22px;
-    padding-right: ${props => (props.submitted ? "0" : "46px")};
-    font-weight: 500;
-
-    transition: all 250ms ease-out;
-    width: ${props => (props.submitted ? "52px" : "100%")};
-
-    transform: translateX(${props => (props.submitted ? "0px" : "0")});
-
-    &::placeholder {
-        opacity: ${props => (props.submitted ? "0" : "0.35")};
-    } */
-    /* 
-    &:focus::-webkit-input-placeholder {
-        color: transparent;
-    } */
-`
-
-const SubmitArrow = styled.button`
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-    border: none;
-    background: none;
-    border-radius: 50%;
-    margin: 0 0.5rem;
-    width: 42px;
-    height: 42px;
-    position: relative;
-
-    opacity: ${props => (props.enabled ? 1 : 0.2)};
-
-    margin-left: -48px;
-    z-index: 3px;
-
-    &:hover {
-        background-color: ${props => (props.submitted ? "transparent" : "#efefef")};
-    }
-
-    &:active {
-        background-color: ${props => (props.submitted ? "transparent" : "#dfdfdf")};
-    } */
-`
-
-const ArrowIcon = styled.svg`
-    /* height: 20px;
-    width: 20px;
-    user-select: none;
-    position: relative;
-    margin-top: 1px;
-    z-index: 1; */
-`
 
 export function Input() {
     const router = useRouter()
@@ -115,18 +47,11 @@ export function Input() {
 
     return (
         <div style={{ padding: 10 }}>
-            <InputContainer onSubmit={handleUrlSubmit} submitted={isUrlSubmitted}>
-                <LinkInput
-                    autoFocus
-                    placeholder="Are.na channel url…"
-                    type="text"
-                    value={url}
-                    onChange={handleUrlChange}
-                    submitted={isUrlSubmitted}
-                />
+            <form onSubmit={handleUrlSubmit}>
+                <input autoFocus placeholder="Are.na channel url…" type="text" value={url} onChange={handleUrlChange} />
 
-                <SubmitArrow enabled={url.trim().length > 0}>
-                    <ArrowIcon xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                         <g transform="translate(3 4.5)">
                             <path
                                 d="M 9.5 11 L 15 5.5 L 9.5 0"
@@ -145,9 +70,9 @@ export function Input() {
                                 strokeLinejoin="round"
                             ></path>
                         </g>
-                    </ArrowIcon>
-                </SubmitArrow>
-            </InputContainer>
+                    </svg>
+                </div>
+            </form>
             {errorMessage && <p>{errorMessage}</p>}
             {isUrlSubmitted && !errorMessage && <p>loading…</p>}
             {cache && (
