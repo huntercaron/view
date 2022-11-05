@@ -34,3 +34,8 @@ html, body, #root, #__next {
   height: 100%;
   margin: 0;
 }
+.login {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+}

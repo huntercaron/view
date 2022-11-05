@@ -10,7 +10,8 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
     return (
         <div>
-            <p>{error.message}</p>
+            {/* <p>{error.message}</p> */}
+            <p>Failed to get Are.na channel, maybe you need to log in?</p>
             <p>
                 Otherwise, <Link href="/">Go back home?</Link>
             </p>

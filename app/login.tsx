@@ -8,5 +8,9 @@ export default function Login() {
         signIn("arena", { redirect: false })
     }
 
-    return <button onClick={handleLogin}>Login to Are.na</button>
+    return (
+        <button className="login" onClick={handleLogin}>
+            Login to Are.na
+        </button>
+    )
 }
