@@ -164,11 +164,12 @@ export function Input() {
 
 function ChannelLink({ channel }) {
     const [isLoading, setIsLoading] = useState(false)
+    const name = channel.user?.full_name
 
     return (
         <Link href={`/channel/${channel.slug}`} onClick={() => setIsLoading(true)} key={channel.id}>
             <p style={{ margin: 0 }}>
-                {channel.title} - {channel.user.full_name}
+                {channel.title} {name && ` – ${name}`} {isLoading && " – loading…"}
             </p>
         </Link>
     )

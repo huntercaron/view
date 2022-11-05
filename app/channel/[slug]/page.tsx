@@ -4,6 +4,7 @@ import { cookies, headers } from "next/headers"
 import { getAccessToken } from "../../../lib/getAccessToken"
 import { getData } from "../../../lib/getData"
 import { Cache } from "./cache"
+import { getArenaChannel } from "../../../lib/getArenaChannel"
 
 export default async function Channel(props) {
     const slug = props.params.slug
@@ -11,14 +12,13 @@ export default async function Channel(props) {
 
     if (!slug) return <div>please enter channel</div>
 
-    const data = await getData(slug, accessToken)
-    const blocks = data.contents ?? []
+    const { channel, allContents } = await getArenaChannel(slug, accessToken)
 
     return (
         <div>
-            <Cache channel={data} />
-            channel:
-            {blocks.map(block => (
+            <Cache channel={channel} />
+            channel: {channel.title}
+            {allContents.map(block => (
                 <div key={block.id}>
                     <img src={block.image?.thumb?.url} />
                     <h3>{block.generated_title}</h3>

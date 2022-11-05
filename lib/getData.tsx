@@ -1,13 +1,13 @@
 import Arena from "are.na"
 
-export async function getData(channelSlug: string, token: string): Promise<Arena.Channel> {
+export async function getData(channelSlug: string, token: string, page = 1): Promise<Arena.Channel> {
     const baseURL = "https://api.are.na/v2/channels/"
 
     const url = new URL(channelSlug, baseURL)
 
     url.searchParams.set("per", "64")
     url.searchParams.set("direction", "desc")
-    url.searchParams.set("page", "1")
+    url.searchParams.set("page", page + "")
 
     let headers
 
