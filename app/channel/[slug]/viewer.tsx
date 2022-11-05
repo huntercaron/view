@@ -5,7 +5,7 @@ import Arena from "are.na"
 import { useState, useEffect, useRef, useReducer, useMemo } from "react"
 import Link from "next/link"
 
-function shuffleArray(array) {
+function shuffleArray<T extends any[]>(array): T {
     var currentIndex = array.length,
         temporaryValue,
         randomIndex
@@ -29,7 +29,7 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
         if (b?.source?.url.includes("tiktok") || b?.source?.url.includes("instagram")) return false
         return !!b?.image?.thumb?.url
     })
-    const shuffledContent = useMemo(() => shuffleArray(filteredContent), [])
+    const shuffledContent = useMemo(() => shuffleArray<Arena.Block[]>(filteredContent), [])
     const [iterator, incrementIterator] = useReducer(index => (index >= filteredContent.length - 2 ? 0 : index + 1), 0)
     const [hovered, setHovered] = useState(false)
     const [fitImage, setFitImage] = useState(false)
@@ -37,7 +37,11 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const interval = useRef<number>()
 
     function handleKeyDown(e) {
-        if (e.keyCode === 32) incrementIterator()
+        console.log(e.key)
+        if (e.keyCode === 32) {
+            incrementIterator()
+            setupInterval()
+        }
     }
 
     function setupInterval() {
@@ -65,19 +69,29 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const nextIndex = iterator < shuffledContent.length - 1 ? iterator + 1 : 0
     const nextBlock = shuffledContent[nextIndex]
 
+    console.log(selectedBlock)
+
     return (
         <div
             onKeyDown={handleKeyDown}
+            tabIndex={0}
             onClick={handleNextBlock}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
             {hovered && (
                 <div className={styles["info-container"]}>
-                    <p className={styles.info}> channel: {channel.title}</p>
                     <Link href="/">
-                        <p className={styles.info}>← Back</p>
+                        <p className={styles.info} style={{ marginTop: 8 }}>
+                            ← Back
+                        </p>
                     </Link>
+                    <p className={styles.info}> channel: {channel.title}</p>
+                    {/* {selectedBlock?.source?.url && (
+                        <a target={"_blank"} href={selectedBlock.source.url}>
+                            <p className={styles.info}>open source</p>
+                        </a>
+                    )} */}
                 </div>
             )}
 

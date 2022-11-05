@@ -30,6 +30,7 @@ body {
 }
 
 html, body, #root, #__next {
+  -webkit-app-region: drag;
   height: 100%;
   margin: 0;
 }
