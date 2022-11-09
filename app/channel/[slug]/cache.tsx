@@ -16,8 +16,6 @@ export function Cache({ channel }: { channel: Arena.Channel }) {
 
         const cache = parsedCache ? new Map<number, ChannelInfo>(parsedCache) : new Map<number, ChannelInfo>()
 
-        if (cache.has(channel.id)) return
-
         const reducedChannel = channel
         delete reducedChannel.contents
         delete reducedChannel.collaborators
