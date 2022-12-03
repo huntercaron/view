@@ -24,7 +24,7 @@ export function CachedChannels(props) {
 
     return (
         <>
-            {dedupedCache.length > 0 && (
+            {dedupedCache && dedupedCache.length > 0 && (
                 <div>
                     <br />
                     === Recently Opened:
