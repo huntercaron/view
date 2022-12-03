@@ -19,7 +19,7 @@ export async function getData(channelSlug: string, token: string, page = 1): Pro
 
     try {
         const res = await fetch(url, {
-            next: { revalidate: 3600 },
+            next: { revalidate: 10000 },
             headers,
         })
 

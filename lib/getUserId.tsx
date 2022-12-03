@@ -1,5 +1,6 @@
 export async function getUserId(token: string) {
     const res = await fetch("https://api.are.na/graphql", {
+        next: { revalidate: 10000 },
         headers: {
             accept: "*/*",
             "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",

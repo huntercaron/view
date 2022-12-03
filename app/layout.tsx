@@ -8,11 +8,8 @@ async function Profile() {
     const token = await getAccessToken(cookies(), headers())
 
     const userId = await getUserId(token)
-    console.log(userId)
-    const res = await fetch(`https://api.are.na/v2/users/${userId}`, { next: { revalidate: 3600 } })
+    const res = await fetch(`https://api.are.na/v2/users/${userId}`, { next: { revalidate: 10000 } })
     const user = await res.json()
-
-    console.log(user)
 
     return (
         <div className="login">

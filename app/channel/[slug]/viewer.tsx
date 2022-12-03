@@ -2,6 +2,7 @@
 
 import styles from "./viewer.module.css"
 import Arena from "are.na"
+
 import { useState, useEffect, useRef, useReducer, useMemo } from "react"
 import Link from "next/link"
 
@@ -33,7 +34,7 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const [iterator, incrementIterator] = useReducer(index => (index >= filteredContent.length - 2 ? 0 : index + 1), 0)
     const [hovered, setHovered] = useState(false)
     const [fitImage, setFitImage] = useState(false)
-    const viewMode = "TIMER"
+    const viewMode = useMemo(() => "TIMER", [])
     const interval = useRef<number>()
 
     function handleKeyDown(e) {
@@ -75,7 +76,7 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
         <div
             onKeyDown={handleKeyDown}
             tabIndex={0}
-            onClick={handleNextBlock}
+            onMouseDown={handleNextBlock}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
