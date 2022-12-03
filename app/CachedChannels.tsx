@@ -14,10 +14,12 @@ export function CachedChannels(props) {
     const cache = useMemo(() => (parsedCache ? new Map<number, ChannelInfo>(parsedCache) : null), [])
 
     const dedupedCache = useMemo(() => {
-        if (!cache || channels.length === 0) return
+        if (!cache) return null
+        const cacheArray = [...cache]
+        if (!channels || channels.length === 0) return cacheArray
         const otherChannels = new Map(channels.map(channel => [channel.id, channel]))
 
-        return [...cache].filter(([id]) => !otherChannels.has(id))
+        return cacheArray.filter(([id]) => !otherChannels.has(id))
     }, [])
 
     return (

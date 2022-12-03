@@ -14,9 +14,16 @@ export default async function Page() {
     return (
         <div style={{ padding: 10, overflowY: "auto", maxHeight: "100vh" }}>
             <Input />
-            <br />
-            === Your Channels:
-            {channels && channels.map(channel => <ChannelLink key={channel.id} channel={channel} showAuthor={false} />)}
+
+            {channels && (
+                <>
+                    <br />
+                    === Your Channels:
+                    {channels.map(channel => (
+                        <ChannelLink key={channel.id} channel={channel} showAuthor={false} />
+                    ))}
+                </>
+            )}
             <CachedChannels channels={channels} />
         </div>
     )
