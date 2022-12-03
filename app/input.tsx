@@ -1,11 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-
-import Link from "next/link"
 import { useRouter } from "next/navigation"
-
-import { CHANNEL_CACHE_KEY, ChannelInfo } from "./channel/[slug]/cache"
 
 export function Input() {
     const router = useRouter()
@@ -41,12 +37,8 @@ export function Input() {
         setIsUrlSubmitted(false)
     }
 
-    const rawCache = localStorage.getItem(CHANNEL_CACHE_KEY)
-    const parsedCache = JSON.parse(rawCache)
-    const cache = parsedCache ? new Map<number, ChannelInfo>(parsedCache) : null
-
     return (
-        <div style={{ padding: 10 }}>
+        <div>
             <form onSubmit={handleUrlSubmit}>
                 <input autoFocus placeholder="Are.na channel url…" type="text" value={url} onChange={handleUrlChange} />
 
@@ -75,27 +67,6 @@ export function Input() {
             </form>
             {errorMessage && <p>{errorMessage}</p>}
             {isUrlSubmitted && !errorMessage && <p>loading…</p>}
-            {cache && (
-                <div>
-                    ===
-                    {[...cache].map(([_, channel]) => (
-                        <ChannelLink key={channel.id} channel={channel} />
-                    ))}
-                </div>
-            )}
         </div>
-    )
-}
-
-function ChannelLink({ channel }) {
-    const [isLoading, setIsLoading] = useState(false)
-    const name = channel.user?.full_name
-
-    return (
-        <Link href={`/channel/${channel.slug}`} onClick={() => setIsLoading(true)} key={channel.id}>
-            <p style={{ margin: 0 }}>
-                {channel.title} {name && ` – ${name}`} {isLoading && " – loading…"}
-            </p>
-        </Link>
     )
 }

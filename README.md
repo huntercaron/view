@@ -7,3 +7,7 @@ View is a constraint based tool for viewing your visual inspiration.
 - Supports Two Randomized View Modes
   - Clickthrough 
   - Timer
+
+### Ideas
+- Cache page count to fetch only one page and stream in the rest
+- stream everything?

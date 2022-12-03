@@ -69,6 +69,8 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const nextIndex = iterator < shuffledContent.length - 1 ? iterator + 1 : 0
     const nextBlock = shuffledContent[nextIndex]
 
+    if (!selectedBlock) return "No blocks or blocks with images found in channel"
+
     return (
         <div
             onKeyDown={handleKeyDown}
@@ -85,24 +87,24 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
                         </p>
                     </Link>
                     <p className={styles.info}> channel: {channel.title}</p>
-                    {/* {selectedBlock?.source?.url && (
+                    {selectedBlock?.source?.url && (
                         <a target={"_blank"} href={selectedBlock.source.url}>
                             <p className={styles.info}>open source</p>
                         </a>
-                    )} */}
+                    )}
                 </div>
             )}
 
             {viewMode === "TIMER" && (
                 <>
                     <div>
-                        <img className={styles.image} src={selectedBlock.image.thumb.url} />
+                        <img className={styles.image} src={selectedBlock.image.display.url} />
                     </div>
                     <div>
-                        <img className={styles.background} src={selectedBlock.image.thumb.url} />
+                        <img className={styles.background} src={selectedBlock.image.display.url} />
                     </div>
                     <div className={styles.image} style={{ opacity: 0 }}>
-                        <img src={nextBlock.image.thumb.url} />{" "}
+                        <img src={nextBlock.image.display.url} />{" "}
                     </div>
                 </>
             )}

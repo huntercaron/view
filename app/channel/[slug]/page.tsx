@@ -5,6 +5,7 @@ import { getAccessToken } from "../../../lib/getAccessToken"
 import { Cache } from "./cache"
 import { Viewer } from "./viewer"
 import { getArenaChannel } from "../../../lib/getArenaChannel"
+import { getUserChannels } from "../../../lib/getUserChannels"
 
 export default async function Channel(props) {
     const slug = props.params.slug
@@ -17,6 +18,7 @@ export default async function Channel(props) {
     return (
         <div className="">
             <Cache channel={channel} />
+            {/* @ts-ignore */}
             <Viewer contents={allContents} channel={channel} />
         </div>
     )
