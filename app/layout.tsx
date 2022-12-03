@@ -1,27 +1,10 @@
 import { cookies, headers } from "next/headers"
 import { getAccessToken } from "../lib/getAccessToken"
-import { getUserId } from "../lib/getUserId"
 import "./global.css"
 import Login from "./login"
 
-async function Profile() {
-    const token = await getAccessToken(cookies(), headers())
-
-    const userId = await getUserId(token)
-    const res = await fetch(`https://api.are.na/v2/users/${userId}`, { next: { revalidate: 10000 } })
-    const user = await res.json()
-
-    return (
-        <div className="login">
-            {" "}
-            <img src={user.avatar} />
-        </div>
-    )
-}
-
 export default async function RootLayout({ children }) {
     const token = await getAccessToken(cookies(), headers())
-
     const isLoggedIn = !!token
 
     return (
@@ -32,7 +15,6 @@ export default async function RootLayout({ children }) {
             <body>
                 {!isLoggedIn && <Login />}
                 {/* @ts-ignore */}
-                {isLoggedIn && <Profile />}
                 <>{children}</>
             </body>
         </html>

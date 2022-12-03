@@ -6,6 +6,7 @@ import { Input } from "./input"
 import { getAccessToken } from "../lib/getAccessToken"
 import { ChannelLink } from "./ChannelLink"
 import { CachedChannels } from "./CachedChannels"
+import { Profile } from "./Profile"
 
 export default async function Page() {
     const accessToken = await getAccessToken(cookies(), headers())
@@ -14,6 +15,9 @@ export default async function Page() {
     return (
         <div style={{ padding: 10, overflowY: "auto", maxHeight: "100vh" }}>
             <Input />
+
+            {/* @ts-ignore */}
+            {accessToken && <Profile />}
 
             {channels && (
                 <>
