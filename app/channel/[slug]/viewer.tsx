@@ -27,6 +27,7 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const { contents, channel } = props
 
     const filteredContent = contents.filter(b => {
+        if (b.class === "Text") return true
         if (b?.source?.url.includes("tiktok") || b?.source?.url.includes("instagram")) return false
         return !!b?.image?.thumb?.url
     })
@@ -67,6 +68,8 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     }
 
     const selectedBlock = shuffledContent[iterator]
+    if (selectedBlock.class === "Text") console.log(selectedBlock)
+
     const nextIndex = iterator < shuffledContent.length - 1 ? iterator + 1 : 0
     const nextBlock = shuffledContent[nextIndex]
 
@@ -98,15 +101,26 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
 
             {viewMode === "TIMER" && (
                 <>
-                    <div>
-                        <img className={styles.image} src={selectedBlock.image.display.url} />
-                    </div>
-                    <div>
-                        <img className={styles.background} src={selectedBlock.image.display.url} />
-                    </div>
-                    <div className={styles.image} style={{ opacity: 0 }}>
-                        <img src={nextBlock.image.display.url} />{" "}
-                    </div>
+                    {selectedBlock.class !== "Text" && (
+                        <>
+                            <div>
+                                <img className={styles.image} src={selectedBlock.image.display.url} />
+                            </div>
+                            <div>
+                                <img className={styles.background} src={selectedBlock.image.display.url} />
+                            </div>
+                        </>
+                    )}
+
+                    {selectedBlock.class === "Text" && (
+                        <div dangerouslySetInnerHTML={{ __html: selectedBlock.content_html }} />
+                    )}
+
+                    {nextBlock.class !== "Text" && (
+                        <div className={styles.image} style={{ opacity: 0 }}>
+                            <img src={nextBlock.image.display.url} />{" "}
+                        </div>
+                    )}
                 </>
             )}
         </div>
