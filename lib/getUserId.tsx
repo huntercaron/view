@@ -26,6 +26,5 @@ export async function getUserId(token: string) {
         credentials: "omit",
     })
     const data = await res.json()
-
     return data.data.me.id
 }

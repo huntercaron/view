@@ -74,7 +74,7 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
     const nextBlock = shuffledContent[nextIndex]
 
     if (!selectedBlock) return "No blocks or blocks with images found in channel"
-
+    console.log(selectedBlock)
     return (
         <div
             onKeyDown={handleKeyDown}
@@ -85,11 +85,11 @@ export function Viewer(props: { contents: Arena.Block[]; channel: Arena.Channel 
         >
             {hovered && (
                 <div className={styles["info-container"]}>
-                    <Link href="/">
+                    {/* <Link href="/">
                         <p className={styles.info} style={{ marginTop: 8 }}>
                             ← Back
                         </p>
-                    </Link>
+                    </Link> */}
                     <p className={styles.info}> channel: {channel.title}</p>
                     {selectedBlock?.source?.url && (
                         <a target={"_blank"} href={selectedBlock.source.url}>

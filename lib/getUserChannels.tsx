@@ -13,7 +13,11 @@ export async function getUserChannels(token: string): Promise<Arena.Channel[]> {
 
     const userId = await getUserId(token)
 
-    const res = await fetch(`http://api.are.na/v2/users/${userId}/channels`, {
+    const url = new URL(`http://api.are.na/v2/users/${userId}/channels`)
+
+    url.searchParams.set("per", "64")
+
+    const res = await fetch(url, {
         next: { revalidate: 10000 },
         headers: { authorization: `Bearer ${token}` },
     })
