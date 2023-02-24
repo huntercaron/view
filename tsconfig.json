@@ -24,7 +24,8 @@
         "name": "next"
       }
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",

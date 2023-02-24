@@ -28,7 +28,7 @@ export default async function Page() {
                     ))}
                 </>
             )}
-            <CachedChannels channels={channels} />
+            {/* <CachedChannels channels={channels} /> */}
         </div>
     )
 }
